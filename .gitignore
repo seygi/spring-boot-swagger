@@ -35,3 +35,4 @@ build/
 # Default ignored files
 /shelf/
 /workspace.xml
+db_data/
