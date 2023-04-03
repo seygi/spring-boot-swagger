@@ -23,11 +23,11 @@ public class BrexService {
         Response response = client.newCall(request).execute();
         String result = response.body().string();
 
+//        result = "{\"data\":[{\"company\":\"Brex\",\"created_at\":\"2017-01-01T01:13:36Z\",\"name\":\"Pedro Franceschi\"},{\"company\":\"Apple\",\"created_at\":\"1976-04-01T01:13:36-03:00\",\"name\":\"Steve Jobs\"}]}";
+
         BrexResponse brexResponse = new Gson().fromJson(result, BrexResponse.class);
 
         return brexResponse;
-//        String json = new Gson().toJson(brexResponse);
-//        System.out.println(json);
     }
 
 }

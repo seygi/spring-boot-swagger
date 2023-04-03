@@ -1,24 +1,28 @@
 package com.example.springbootswagger.model.brex;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.ZonedDateTime;
 
 public class BrexItemResponse {
-    private static final DateTimeFormatter ISO_8601_FORMATTER = DateTimeFormatter.ISO_DATE_TIME;
     @Getter
     @Setter
+    @SerializedName("company")
     private String company;
     @Getter
     @Setter
     @JsonAdapter(DateTimeAdapter.class)
     @SerializedName("created_at")
-    private LocalDateTime createdAt;
+//    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "UTC")
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ssXXX")
+    private ZonedDateTime createdAt;
     @Getter
     @Setter
+    @SerializedName("name")
     private String name;
 }
