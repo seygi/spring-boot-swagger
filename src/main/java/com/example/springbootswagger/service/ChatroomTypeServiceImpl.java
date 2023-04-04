@@ -45,12 +45,12 @@ public class ChatroomTypeServiceImpl implements ChatroomTypeService {
 
     @Override
     @Transactional
-    public void savePetType(ChatroomType chatroomType) throws DataAccessException {
-        chatroomTypeRepository.save(chatroomType);
+    public ChatroomType saveChatroomType(ChatroomType chatroomType) throws DataAccessException {
+        return chatroomTypeRepository.save(chatroomType);
     }
 
     @Override
-    public void deletePetType(ChatroomType chatroomType) throws DataAccessException {
+    public void deleteChatroomType(ChatroomType chatroomType) throws DataAccessException {
         chatroomTypeRepository.delete(chatroomType);
     }
 }

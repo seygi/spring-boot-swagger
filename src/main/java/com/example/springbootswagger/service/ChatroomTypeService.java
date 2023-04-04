@@ -8,6 +8,6 @@ import java.util.Collection;
 public interface ChatroomTypeService {
     ChatroomType findChatroomTypeById(int chatroomTypeId);
     Collection<ChatroomType> findAllChatroomTypes() throws DataAccessException;
-    void savePetType(ChatroomType chatroomType) throws DataAccessException;
-    void deletePetType(ChatroomType chatroomType) throws DataAccessException;
+    ChatroomType saveChatroomType(ChatroomType chatroomType) throws DataAccessException;
+    void deleteChatroomType(ChatroomType chatroomType) throws DataAccessException;
 }
