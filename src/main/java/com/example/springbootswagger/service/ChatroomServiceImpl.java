@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.stereotype.Service;
@@ -45,8 +47,8 @@ public class ChatroomServiceImpl implements ChatroomService {
 
     @Override
     @Transactional(readOnly = true)
-    public Collection<Chatroom> findAllChatrooms() throws DataAccessException {
-        return chatroomRepository.findAll();
+    public Page<Chatroom> findAllChatrooms(Pageable pageable) throws DataAccessException {
+        return chatroomRepository.findAll(pageable);
     }
 
     @Override

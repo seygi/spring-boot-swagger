@@ -26,9 +26,13 @@ public class ProductService {
         return ResponseEntity.ok(newProduct);
     }
 
-    public ResponseEntity<List<Product>> fetchAllProducts()
+    public List<Product> fetchAllProducts(int pageNo, int pageSize)
     {
-        return ResponseEntity.ok(productRepository.findAll());
+        int offset = (pageNo - 1) * pageSize;
+        if (offset < 0) {
+            offset = 0;
+        }
+        return productRepository.findAllWithPagination(offset, pageSize);
     }
 
     public ResponseEntity<Optional<Product>> fetchProductById(Long id)

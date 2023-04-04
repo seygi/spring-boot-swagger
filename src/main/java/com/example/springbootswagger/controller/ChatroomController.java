@@ -5,8 +5,11 @@ import com.example.springbootswagger.dto.ChatroomDto;
 import com.example.springbootswagger.dto.ChatroomMessageDto;
 import com.example.springbootswagger.mapper.ChatroomMapper;
 import com.example.springbootswagger.mapper.ChatroomMessageMapper;
+import com.example.springbootswagger.model.Chatroom;
 import com.example.springbootswagger.service.ChatroomMessageService;
 import com.example.springbootswagger.service.ChatroomService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,12 +29,15 @@ public class ChatroomController {
     }
 
     @GetMapping()
-    public ResponseEntity<List<ChatroomDto>> listAllChatrooms() {
-        List<ChatroomDto> chatrooms = new ArrayList<>(ChatroomMapper.toDtos(this.chatroomService.findAllChatrooms()));
+    public ResponseEntity<Page<Chatroom>> listAllChatrooms(Pageable pageable) {
+//        List<ChatroomDto> chatrooms = new ArrayList<>(ChatroomMapper.toDtos(this.chatroomService.findAllChatrooms()));
+
+        var chatrooms = this.chatroomService.findAllChatrooms(pageable);
+
         if (chatrooms.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(chatrooms, HttpStatus.OK);
+        return ResponseEntity.ok(chatrooms);
     }
 
     @PostMapping()

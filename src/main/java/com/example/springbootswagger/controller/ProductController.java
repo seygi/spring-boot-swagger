@@ -29,9 +29,11 @@ public class ProductController {
 
     // Get all products
     @GetMapping("/products")
-    public List<Product> getAllProducts()
+    public ResponseEntity<List<Product>> getAllProducts(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size)
     {
-        return productService.fetchAllProducts().getBody();
+        return ResponseEntity.ok(productService.fetchAllProducts(page, size));
     }
 
     // Get a product by ID
