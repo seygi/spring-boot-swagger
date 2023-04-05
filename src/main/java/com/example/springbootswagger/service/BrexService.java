@@ -28,6 +28,16 @@ public class BrexService {
         BrexResponse brexResponse = new Gson().fromJson(result, BrexResponse.class);
 
         return brexResponse;
+
+        /*
+          LocalDateTime now = LocalDateTime.now();
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+          String formattedDateTime = now.format(formatter);
+          *
+          String dateTimeString = "2023-04-05 10:30:00";
+          DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+          LocalDateTime dateTime = LocalDateTime.parse(dateTimeString, formatter);
+        */
     }
 
 }
